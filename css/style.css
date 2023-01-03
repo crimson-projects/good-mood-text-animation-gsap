@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #141414;
+}
+
+#main_svg {
+  animation: squiglly 0.8s infinite;
+}
+
+.noisy__bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+.noisy__bg .bg {
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  left: -110%;
+  top: -110%;
+  filter: contrast(100) brightness(0.75) grayscale(1);
+  animation: grain 2s steps(1) infinite;
+  background-blend-mode: difference;
+  background-image: url("https://source.unsplash.com/2bg4wDCGU3g/1280x720");
+  background-color: salmon;
+  background-size: cover;
+}
+
+@keyframes squiglly {
+  0% {
+    -webkit-filter: url("#squiggly-0");
+    filter: url("#squiggly-0");
+  }
+  25% {
+    -webkit-filter: url("#squiggly-1");
+    filter: url("#squiggly-1");
+  }
+  50% {
+    -webkit-filter: url("#squiggly-2");
+  }
+  75% {
+    -webkit-filter: url("#squiggly-3");
+    filter: url("#squiggly-3");
+  }
+  100% {
+    -webkit-filter: url("#squiggly-4");
+    filter: url("#squiggly-4");
+  }
+}
+@keyframes grain {
+  0%, to {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  10% {
+    -webkit-transform: translate(-5%, -10%);
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    -webkit-transform: translate(-15%, 5%);
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    -webkit-transform: translate(7%, -25%);
+    transform: translate(7%, -25%);
+  }
+  40% {
+    -webkit-transform: translate(-5%, 25%);
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    -webkit-transform: translate(-15%, 10%);
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    -webkit-transform: translate(15%);
+    transform: translate(15%);
+  }
+  70% {
+    -webkit-transform: translateY(15%);
+    transform: translateY(15%);
+  }
+  80% {
+    -webkit-transform: translate(3%, 35%);
+    transform: translate(3%, 35%);
+  }
+  90% {
+    -webkit-transform: translate(-10%, 10%);
+    transform: translate(-10%, 10%);
+  }
+}
+.support {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px;
+  display: flex;
+}
+.support a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 1.8rem;
+  backface-visibility: hidden;
+  transition: all 150ms ease;
+}
+.support a:hover {
+  transform: scale(1.1);
+}
